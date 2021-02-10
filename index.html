@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <link href="https://fonts.googleapis.com/css?family=Lato:300,400&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; font-family: Lato; }
+    input { margin: 10px 0 5px 0; padding: 5px 5px; width: calc(100% - 10px); background: rgba(0, 0, 0, 0.3); color: #FFF; font-weight: bold; }
+    .show-form { box-shadow: rgba(0, 0, 0, 0.5) 0 5px 15px; width: 75px; cursor: pointer; height: 75px; left: calc(50% - (75px / 2)); border-radius: 50%; border: none; background: #453165; color: #FFF; position: absolute; bottom: calc(50% - (75px / 2)); }
+    .expand { animation: spinButton 1s ease-out forwards; }
+    .form-details { display: none; padding: 30px 35px; }
+    .sign-in { display: flex; align-items: center; justify-content: center; height: 100%; }
+    .text-center { text-align: center; }
+    .text-center button { margin-top: 20px; background: transparent; padding: 4px 10px; color: #FFF; outline: 0; border-radius: 5px; border: #FFF 1px solid; cursor: pointer; font-size: 1.2em; }
+    @keyframes spinButton {
+      10% { width: 400px; border-radius: 5px; left: calc(50% - (400px / 2)); }
+      50% { height: 100px; width: 400px; left: calc(50% - (400px / 2)); }
+      60% { height: 200px; width: 400px; left: calc(50% - (400px / 2)); transform: rotate(5deg); }
+      100% { height: 250px; width: 400px; border-radius: 10px; left: calc(50% - (400px / 2)); bottom: calc(50% - (250px / 2)); }
+    }
+  </style>
+</head>
+<body>
+  <div class="show-form">
+    <div class="sign-in">
+      Sign-in
+    </div>
+    <div class="form-details">
+      <div class="text-center">
+        <h1>Welcome</h1>
+      </div>
+
+      <input placeholder="E-mail">
+      <input placeholder="Password" type="password">
+      <div class="text-center">
+        <button>
+          Login
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    $('.show-form').bind('click', function() {
+      $('.sign-in').hide();
+      $(this).toggleClass('expand');
+      setTimeout(function() {
+        $('.show-form').unbind('click').css('cursor', 'initial');
+        $('.form-details').fadeIn(300);
+      }, 1000);
+    });
+  </script>
+</body>
+</html>
